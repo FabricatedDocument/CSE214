@@ -1,9 +1,3 @@
-/*
- * Name: SukMin Sim
- * ID: 112190914
- * Recitation: 02
- */
-
 public class Team {
 	public static final int MAX_PLAYERS = 40; //Max capacity of players.
 	
