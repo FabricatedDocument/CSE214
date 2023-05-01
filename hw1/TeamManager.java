@@ -1,9 +1,3 @@
-/*
- * Name: SukMin Sim
- * ID: 112190914
- * Recitation: 02
- */
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
