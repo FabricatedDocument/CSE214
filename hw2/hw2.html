@@ -1,0 +1,1141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+    
+
+
+
+
+    <div lang="EN-US">
+        <div>
+            <h2 align="center" style="text-align:center;">
+                <span>
+                    <img width="244" height="121" src="http://www.cs.stonybrook.edu/~cse214/images/logo.gif"/>
+                </span>
+                <br/>
+                <span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:maroon;">
+					HOMEWORK 2- Spring 2023
+				</span>
+            </h2>
+            <hr size="2" width="100%" align="center"/>
+            <h3>
+                <span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">
+                    <b>HOMEWORK 2 - due Tuesday, February 21st no later than 7:00PM</b>
+                </span>
+            </h3>
+            <p><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">
+    REMINDERS:
+</span></strong></p>
+            <ul type="disc">
+			<li><b><span style="color:red;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">
+   Use of a package is optional. If you wish to use it, make sure to name it &quot;hw2&quot; (all in lower case). Otherwise, you will lose points.</span></b><span></span></li>
+
+                <li><b><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">Be sure your
+     code follows the <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/codingstyle.htm" target="_blank">coding
+     style</a> for CSE214. </span></b><span></span></li>
+                <li><b><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">Make sure
+     you read the warnings about <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/courseinfo.htm" target="_blank">academic dishonesty</a>.
+     <i>Remember, all work you submit for homework or exams MUST be your own
+     work.</i> </span></b></li>
+                <li><b><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">Login to
+     your <a rel="noopener" href="http://facdev04.cs.stonybrook.edu:8080/grade.Login" target="_blank">grading
+     account</a> and click &quot;Submit Assignment&quot; to upload and submit
+     your assignment. </span></b></li>
+                <li><b><span style="font-family:Arial;color:red;">You
+     are not allowed to use any Java API Data
+     Structure classes such as LinkedList, ArrayList or Vector to implement this assignment.</span></b><b><span style="font-family:Arial,sans-serif;"></span></b></li>
+                <li><b><span style="font-family:Arial,sans-serif;">You may
+     use Scanner, InputStreamReader, or any other class that you wish for
+     keyboard input.</span></b></li>
+            </ul>
+            <hr/>
+            <h2>Assignment</h2>
+            <p>In this assignment, you will be required to write a Java program to create and edit a slide show presentation. The presentation manager application should be able to select each slide individually using a cursor, and should allow the user to insert a slide in the middle of the presentation in constant time. To achieved this, the slides will be stored in a <b>doubly linked list</b> data structure. A sample diagram of the structure is provided below for reference. Your program should implement the following classes and adhere to the specifications defined below.</p>
+            
+            <h2 align="center" style="text-align:center;">
+                <span>
+                    <img src="http://www.cs.stonybrook.edu/~cse214/hw/hw2-images/listDiagram.jpg"/>
+                </span>
+                <br/>
+                <span>
+                Schematic of Doubly Linked List Structure
+                </span>
+            </h2>
+            
+            <hr/>
+            <h2>Required Classes</h2>
+
+
+            <h2 align="center" style="text-align:center;">
+                <span>
+                    <img src="http://www.cs.stonybrook.edu/~cse214/hw/hw2-images/slideListUML.jpg"/>
+                </span>
+                <br/>
+                <span>
+                UML Diagram
+                </span>
+            </h2>
+
+
+            <h3><strong>1. <font face="Courier New">Slide</font> Class</strong></h3>
+            <p>Write a fully-documented class named <code>Slide</code> which contains the <strong>title</strong> (<code>String</code>), the array of <strong>bullet points</strong> (<code>String[]</code>), and the <strong>duration</strong> of the slide in minutes (<code>double</code>). Each slide should be limited to a maximum of 5 bullet points, which should be reflected in a static constant named <code>MAX_BULLETS</code>. You should provide getter and setter methods for all member variables, with the getter/setter method for <code>bullets</code> taking an additional index parameter (see the provided UML diagram for further detail). In addition, you should provide a constructor as detailed below, though you may create a custom constructor which takes any arguments you see fit. Lastly, you should provide a <code>toString()</code> method that returns a printable representation of the <code>Slide</code> and it’s data members (<code>title</code>, <code>duration</code>, and <code>bullets</code>).</p>
+            <ul>
+                <li>
+                    <p><strong><font face="Courier New">public static final int MAX_BULLETS = 5</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">private String title</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">private String[] bullets</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">private double duration</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public Slide()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Default constructor.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>This object has been initialized to an empty <code>Slide</code> (<code>title</code> and all <code>bullets</code> are <code>null</code>, <code>duration</code> = 0.0)</li>
+                            </ul>
+                        </li>
+                        <li><em><font color="green">Note</font></em>:
+                            <br/>
+                            <ul>
+                                <li>You may create a custom constructor which takes arguments if you wish.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public String getTitle()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Public getter method for the <code>title</code> member variable.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The title of the <code>Slide</code>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void setTitle(String newTitle)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Public setter method for the <code>title</code> member variable.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newTitle</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The new title of this slide. This parameter should not be <code>null</code></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newTitle</code> is not <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>newTitle</code> is <code>null</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public double getDuration()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Public getter method for the <code>duration</code> member variable.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The duration of the <code>Slide</code>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void setDuration(<span style="color:red;">double</span> newDuration)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Public setter method for the <code>duration</code> member variable.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newDuration</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The new duration of this slide. This parameter should be greater than 0.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newDuration</code> is greater than 0.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>newDuration</code> is less than or equal to 0.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public int getNumBullets()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Gets the total number of bullet point in the <code>Slide</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The number of bullet points in the <code>Slide</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em><font color="green">Note</font></em>:
+                            <br/>
+                            <ul>
+                                <li>This method counts the number of non-<code>null</code> elements in the <code>bullets</code> array.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public String getBullet(int i)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Gets the bullet point at index <code>i</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>i</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The index to retrieve from the array. This value must be between 1 and <code>MAX_BULLETS</code>, inclusive.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>1 ≤ <code>i</code> ≤ <code>MAX_BULLETS</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The <code>String</code> representing the bullet point at the given index (may be <code>null</code>, meaning there is no bullet point at this index).</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>i</code> is not in the valid range.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><p><strong><font face="Courier New">public void setBullet(String bullet, int i)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Sets <code>bullet</code> as the <code>i</code>&#39;th bullet point for <code>bullets</code>. If <code>bullet</code> is <code>null</code>, this method erases the bullet point at index <code>i</code> and pushes all bullet points greater than <code>i</code> back one index (i.e. leaves no “holes” in the <code>bullets</code> array).</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>bullet</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The <code>String</code> to place as the <code>i</code>th bullet point in <code>bullets</code>. This parameter may be <code>null</code>, indicating that the bullet at index <code>i</code> is to be erased from the slide.</li>
+                                    </ul>
+                                </li>
+                                <li><code>i</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The index to place <code>bullet</code> in the array. This value must be between 1 and <code>MAX_BULLETS</code>, inclusive.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>1 ≤ <code>i</code> ≤ <code>MAX_BULLETS</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>The bullet point at index <code>i</code> has been updated to the <code>String</code> <code>bullet</code>.</li>
+                                <li>There are <strong>no holes</strong> in the <code>bullets</code> array. All bullet points occupy the lowest possible indices of the array.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>i</code> is not in the valid range.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em><font color="red">Note</font></em>:
+                            <br/>
+                            <ul>
+                                <li>You may index bullets in this array however you like. If you wish to allocate a <code>String</code> array of size <code>MAX_BULLETS</code> and index starting from 0, this is fine (just remember to subtract 1 from <code>i</code> before setting the bullet point). Conversely, you can also allocate a <code>String</code> array of size <code>MAX_BULLETS + 1</code> and index from 1, using the 0&#39;th index as a dummy placeholder (you can use <code>i</code> as-is). 
+                            </li></ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3><strong>2. <font face="Courier New">SlideListNode</font> Class</strong></h3>
+            <p>Write a full-documented class named <code>SlideListNode</code> that wraps a <code>Slide</code> object to allow it to be inserted into a doubly linked-list data structure. The <code>Slide</code> object reference should be contained in a field called <code>data</code>, and there should be two <code>SlideListNode</code> references serving as ‘links’ to the previous and next <code>SlideListNodes</code> in the list. The class will be based on the following ADT specification:</p>
+            <ul>
+                <li>
+                    <p><strong><font face="Courier New">private Slide data</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">private SlideListNode next</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">private SlideListNode prev</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public SlideListNode(Slide initData)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Default constructor.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>initData</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The data to be wrapped by this <code>SlideListNode</code>. This parameter should not be <code>null</code>, since we should never have a <code>SlideListNode</code> with <code>null</code> data (remember, this class serves only as a wrapper for the <code>Slide</code> class).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>initData</code> is not <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>This <code>SlideListNode</code> has been initialized to wrap the indicated <code>Slide</code>, and <code>prev</code> and <code>next</code> have been set to <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws:</em>
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>initData</code> is <code>null</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public Slide getData()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Gets the reference to the <code>data</code> member variable of the list node.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The reference of the <code>data</code> member variable.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void setData(Slide newData)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Updates the <code>data</code> member variable with a reference to a new <code>Slide</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newData</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Reference to a new <code>Slide</code> object to update the <code>data</code> member variable. This parameter should not be <code>null</code>, since we should never have a <code>SlideListNode</code> with <code>null</code> data (remember, this class serves only as a wrapper for the <code>Slide</code> class).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newData</code> is not <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>newData</code> is <code>null</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public SlideListNode getNext()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Gets the reference to the <code>next</code> member variable of the list node.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The reference of the <code>next</code> member variable. Note that this return value can be <code>null</code>, meaning that there is <b>no</b> next <code>SlideListNode</code> in the list.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void setNext(SlideListNode newNext)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Updates the <code>next</code> member variable with a new <code>SlideListNode</code> reference.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newNext</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Reference to a new <code>SlideListNode</code> object to update the <code>next</code> member variable. This parameter may be <code>null</code>, since it is okay to have no next <code>SlideListNode</code> (this means we’ve reached the tail of the list!).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public SlideListNode getPrev()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Gets the reference to the <code>prev</code> member variable of the list node.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The reference of the <code>prev</code> member variable. Note that this return value can be <code>null</code>, meaning that there is <strong>no</strong> previous <code>SlideListNode</code> in the list. (this means we’ve reached the head of the list!).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void setPrev(SlideListNode newPrev)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Updates the <code>prev</code> member variable with a new <code>SlideListNode</code> reference.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newPrev</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Reference to a new <code>SlideListNode</code> object to update the <code>prev</code> member variable. This parameter may be <code>null</code>, since it is okay to have no previous <code>SlideListNode</code> (this means we’ve reached the head of the list!).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3><b>3. <font face="Courier New">SlideList</font> Class</b></h3>
+            <p>Write a fully-documented class named <code>SlideList</code> which implements a double linked-list data structure. The <code>SlideList</code> should maintain a list of <code>Slides</code> by chaining a series of <code>SlideListNodes</code> between a <code>head</code> and a <code>tail</code> reference. In addition, a <code>cursor</code> should be provided to allow a user to traverse the list, selecting individual <code>SlideListNodes</code> to allow for insertion, deletion, and manipulation of the <code>Slides</code> they contain. Lastly, the class should provide methods to query information about the list, such as it’s size, the total duration of all <code>Slides</code> in the list, and the total bullet points of all <code>Slides</code> in the list.</p>
+            <ul>
+                <li>
+                    <p><strong><font face="Courier New"><font color="red">private</font> SlideListNode head</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New"><font color="red">private</font> SlideListNode tail</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New"><font color="red">private</font> SlideListNode cursor</font></strong></p>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public SlideList()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Default constructor which initializes this object to an empty list of <code>Slides</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>This <code>SlideList</code> has been initialized with <code>head</code>, <code>tail</code>, and <code>cursor</code> all set to <code>null</code>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public int size()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Returns the total number of <code>Slides</code> in the slideshow.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The count of all <code>Slides</code> in the slideshow.</li>
+                            </ul>
+                        </li>
+                        <li><em><font color="red">Note</font></em>:
+                            <br/>
+                            <ul>
+                                <li>This method should run on <strong>O(1) time</strong>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public double duration()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Returns the total duration of the slideshow.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The sum of all individual <code>Slide</code> durations in the slideshow.</li>
+                            </ul>
+                        </li>
+                        <li><em><font color="green">Note</font></em>:
+                            <br/>
+                            <ul>
+                                <li>Depending on the implementation, this method may run in <code>O(1)</code> or <code>O(n)</code> time. both will be accepted..</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public int numBullets()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Returns the total number of bullet points in the slideshow.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The sum of all bullet points of all individual <code>Slides</code> in the slideshow.</li>
+                            </ul>
+                        </li>
+                        <li><em><font color="green">Note</font></em>:
+                            <br/>
+                            <ul>
+                                <li>Depending on the implementation, this method may run in <code>O(1)</code> or <code>O(n)</code> time. both will be accepted..</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public Slide getCursorSlide()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Gets the reference to the <code>Slide</code> wrapped by the <code>SlideListNode</code> currently referenced by <code>cursor</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The reference of the <code>Slide</code> wrapped by the <code>SlideListNode</code> currently referenced by <code>cursor</code>. If the cursor is <code>null</code>, then this method should return <code>null</code> as well (i.e. the <code>cursor</code> does not reference a <code>Slide</code>). </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void resetCursorToHead()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Returns the <code>cursor</code> to the start of the list.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>If <code>head</code> is not <code>null</code>, the <code>cursor</code> now references the first <code>SlideListNode</code> in this list.</li>
+                                <li>If <code>head</code> is <code>null</code>, the <code>cursor</code> is set to <code>null</code> as well (there are no <code>Slides</code> in this list).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void cursorForward()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Moves the <code>cursor</code> to select the next <code>SlideListNode</code> in the list. If the <code>cursor</code> is at the <code>tail</code> of the list, this method throws an exception (this includes the case where <code>cursor</code> and <code>tail</code> are both <code>null</code>).</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>EndOfListException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>cursor</code> is at the <code>tail</code> of the list.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void cursorBackward()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Moves the <code>cursor</code> to select the previous <code>SlideListNode</code> in the list. If the <code>cursor</code> is at the <code>head</code> of the list, this method throws an exception (this includes the case where <code>cursor</code> and <code>head</code> are both <code>null</code>).</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>EndOfListException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>cursor</code> is at the <code>head</code> of the list.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void insertBeforeCursor(Slide newSlide)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Inserts the indicated <code>Slide</code> before the <code>cursor</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newSlide</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The <code>Slide</code> object to be wrapped and inserted into the list before the <code>cursor</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newSlide</code> is not <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newSlide</code> has been wrapped in a new <code>SlideListNode</code> object</li>
+                                <li>If <code>cursor</code> was previously not <code>null</code>, the newly created <code>SlideListNode</code> has been inserted into the list before the <code>cursor</code>. </li>
+                                <li>If <code>cursor</code> was previously <code>null</code>, the newly created <code>SlideListNode</code> has been set as the new <code>head</code> of the list (as well as the <code>tail</code>).</li>
+                                <li>The <code>cursor</code> now references the newly created <code>SlideListNode</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>newSlide</code> is <code>null</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em><font color="red">Warning</font></em>
+                            <br/>
+                            <ul>
+                                <li>You should <strong>NOT</strong> move <code>data</code> references around between <code>SlideListNodes</code> to accomplish this method. Instead, you should <strong>wrap</strong> the <code>newSlide</code> object in a new <code>SlideListNode</code> object, and <strong>insert</strong> this object into the list before the <code>cursor</code>. </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public void appendToTail(Slide newSlide)</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Inserts the indicated <code>Slide</code> after the <code>tail</code> of the list.</li>
+                            </ul>
+                        </li>
+                        <li><em>Parameters</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newSlide</code>
+                                    <br/>
+                                    <ul>
+                                        <li>The <code>Slide</code> object to be wrapped and inserted into the list after the <code>tail</code> of the list.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newSlide</code> is not <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>newSlide</code> has been wrapped in a new <code>SlideListNode</code> object</li>
+                                <li>If <code>tail</code> was previously not <code>null</code>, the newly created <code>SlideListNode</code> has been inserted into the list after the <code>tail</code>. </li>
+                                <li>If <code>tail</code> was previously <code>null</code>, the newly created <code>SlideListNode</code> has been set as the new <code>head</code> of the list (as well as the <code>tail</code>).</li>
+                                <li>The <code>tail</code> now references the newly created <code>SlideListNode</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>IllegalArgumentException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>newSlide</code> is <code>null</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <font color="red"><em>Note</em></font>:
+                            <br/>
+                            <ul>
+                                <li>This insertion method does not affect the <code>cursor</code>, unless the list was previously empty. In that case, <code>head</code>, <code>tail</code>, and <code>cursor</code> should all reference the new <code>SlideListNode</code>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong><font face="Courier New">public Slide removeCursor()</font></strong></p>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>Removes the <code>SlideListNode</code> referenced by <code>cursor</code> and returns the <code>Slide</code> inside.</li>
+                            </ul>
+                        </li>
+                        <li><em>Preconditions</em>:
+                            <br/>
+                            <ul>
+                                <li><code>cursor</code> is not <code>null</code>.</li>
+                            </ul>
+                        </li>
+                        <li><em>Postconditions</em>:
+                            <br/>
+                            <ul>
+                                <li>The <code>SlideListNode</code> referenced by cursor has been removed from the list.</li>
+                                <li>All other <code>SlideListNodes</code> in the list exist in the same order as before.</li>
+                                <li>The <code>cursor</code> now references the previous <code>SlideListNode</code> (or the <code>head</code>, if the <code>cursor</code> previously referenced the <code>head</code> of the list).</li>
+                            </ul>
+                        </li>
+                        <li><em>Returns</em>:
+                            <br/>
+                            <ul>
+                                <li>The reference to the <code>Slide</code> contained within the <code>SlideListNode</code> which was just removed from the list.</li>
+                            </ul>
+                        </li>
+                        <li><em>Throws</em>:
+                            <br/>
+                            <ul>
+                                <li><code>EndOfListException</code>
+                                    <br/>
+                                    <ul>
+                                        <li>Thrown if <code>cursor</code> is <code>null</code>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3><b>3. <font face="Courier New">PresentationManager</font> Class</b></h3>
+            <p>Write a fully-documented class named <code>PresentationManager</code> which creates an instance of the <code>SlideList</code> class and provides an interface for a user to manipulate the list by adding, removing, and editing slides. The following functionality should be provided:</p>
+            <ul>
+                <li><strong><font face="Courier New">public static void main(String[] args)</font></strong>
+                    <br/>
+                    <ul>
+                        <li><em>Brief</em>:
+                            <br/>
+                            <ul>
+                                <li>The main method runs a menu driven application which first creates an empty <code>SlideList</code> and then prompts the user for a menu command selecting the operation. The required information is then requested from the user based on the selected operation. Following is the list of menu options and their required information:</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>A sample menu is provided below indicating the functionality your <code>SlideList</code> program should support:</p>
+            <pre>
+    F) Move cursor forward
+    B) Move cursor backward
+    D) Display cursor slide
+    E) Edit cursor slide
+    P) Print presentation summary
+    A) Append new slide to tail
+    I) Insert new slide before cursor
+    R) Remove slide at cursor
+    H) Reset cursor to head
+    Q) Quit
+            </pre>
+            <h3><strong>4. <font face="Courier New">EndOfListException</font> Class</strong></h3>
+            <p>An Exception class which indicates that the user attempted to access a <code>SlideListNode</code> that does not exist (either before the <code>head</code> node or after the <code>tail</code> node). This exception can also be thrown when an operation is performed on an empty list (i.e. <code>head</code>, <code>tail</code>, and <code>cursor</code> are all equal to <code>null</code>).</p>
+            <hr/>
+            <h2>Input Format:</h2>
+            <p>Each menu operation is entered on its own line and should be case insensitive (i.e. q and Q are the same). If the user selects either <code>A) Append new slide to tail</code> or <code>I) Insert new slide before cursor</code>, the user should be prompted to construct a new slide before inserting it accordingly (see sample I/O for examples).</p>
+            <hr/>
+            <h2>Output Format:</h2>
+            <p>All lists must be printed in a nice and tabular form as shown in the sample output. You may use C style formatting as shown in the following example. The example below shows two different ways of displaying the name and address at pre-specified positions 21, 26, 19, and 6 spaces wide. If the ‘-’ flag is given, then it will be left-justified (padding will be on the right), else the region is right-justified. The ‘s’ identifier is for strings, the ‘d’ identifier is for integers. Giving the additional ‘0’ flag pads an integer with additional zeroes in front.</p>
+            <pre>
+    String name = &quot;Doe Jane&quot;;
+    String address = &quot;32 Bayview Dr.&quot;;
+    String city = &quot;Fishers Island, NY&quot;;
+    int zip = 6390;
+    
+    System.out.println(String.format(&quot;%-21s%-26s%19s%06d&quot;, name, address, city, zip));
+    System.out.printf(&quot;%-21s%-26s%19s%06d&quot;, name, address, city, zip);
+
+<span class="comment">   // Output</span>
+    Doe Jane             32 Bayview Dr.             Fishers Island, NY 06390
+    Doe Jane             32 Bayview Dr.             Fishers Island, NY 06390
+            </pre>
+            <hr/>
+            <h2>Sample Input/Output:</h2>
+            <pre><span class="code">
+  <span class="comment">// Comment in green</span>, <span class="input">input in red</span>, output in black
+
+  Welcome to PresentationManager!
+  
+  <span class="comment">// menu</span>
+  Please select an option:
+  F) Move cursor forward
+  B) Move cursor backward
+  D) Display cursor slide
+  E) Edit cursor slide
+  P) Print presentation summary
+  A) Append new slide to tail
+  I) Insert new slide before cursor
+  R) Remove slide at cursor
+  H) Reset cursor to head
+  Q) Quit
+  
+  Select a menu option: <span class="input">A</span>    
+  
+  Enter the slide title: <span class="input">Intro</span>
+  Enter the slide duration: <span class="input">3.2</span>
+  Bullet 1: <span class="input">We will cover 3 programming languages.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 2: <span class="input">Java, C, and JavaScript are all great.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 3: <span class="input">My favorite is C.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 4: <span class="input">You can do amazing things with these languages.</span>
+  Add another bullet point? (y/n) <span class="input">n</span>
+  
+  Slide &quot;Intro&quot; added to presentation.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">P</span>
+  
+  Slideshow Summary:
+  ==============================================
+    Slide    Title         Duration   Bullets
+  ----------------------------------------------
+  -&gt; 1       Intro         3.2        4  
+  ==============================================
+  Total: 1 slide(s), 3.2 minute(s), 4 bullet(s)
+  ==============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">A</span>
+  
+  Enter the slide title: <span class="input">Java</span>
+  Enter the slide duration: <span class="input">6.1</span>
+  Bullet 1: <span class="input">Java is strongly-typed and object-oriented</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 2: <span class="input">Java was created by Sun Microsystems in the 90&#39;s.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 3: <span class="input">The language runs on a Virtual Machine.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 4: <span class="input">It is often used in web technologies.</span>
+  Add another bullet point? (y/n) <span class="input">n</span>
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">P</span>
+  
+  Slideshow Summary:
+  ==============================================
+    Slide    Title         Duration   Bullets
+  ----------------------------------------------
+  -&gt; 1       Intro         3.2        4  
+     2       Java          6.1        4  
+  ==============================================
+  Total: 2 slide(s), 9.3 minute(s), 8 bullet(s)
+  ==============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">F</span>
+  
+  The cursor moved forward to slide &quot;Java&quot;.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">I</span>
+  
+  Enter the slide title: <span class="input">C</span>
+  Enter the slide duration: <span class="input">8.2</span>
+  Bullet 1: <span class="input">C is one of the oldest languages still in use today.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 2: <span class="input">Invented by Ken Thompson and Dennis Ritchie at Bell Labs.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 3: <span class="input">C is a compiled language.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 4: <span class="input">The Unix operating system was written in C.</span>
+  Add another bullet point? (y/n) <span class="input">y</span>
+  Bullet 5: <span class="input">Many newer languages use C-inspired syntax.</span>
+  No more bullets allowed. Slide is full.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">P</span>
+  
+  Slideshow Summary:
+  ==============================================
+    Slide    Title         Duration   Bullets
+  ----------------------------------------------
+     1       Intro         3.2        4  
+  -&gt; 2       C             8.2        5
+     3       Java          6.1        4  
+  ==============================================
+  Total: 3 slide(s), 17.5 minute(s), 13 bullet(s)
+  ==============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">B</span>
+  
+  The cursor moved backward to slide &quot;Intro&quot;.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">D</span>
+  
+  ==============================================
+    Intro
+  ==============================================
+   1. We will cover 3 programming languages.
+   2. Java, C, and JavaScript are all great.
+   3. My favorite is C.
+   4. You can do amazing things with these languages. 
+  =============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">E</span>
+  
+  Edit title, duration, or bullets? (t/d/b) <span class="input">b</span>
+  Bullet index: <span class="input">2</span>
+  Delete or edit? (d/e) <span class="input">e</span>
+  Bullet 2: <span class="input">Java, C, and Python are all great.</span>
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">D</span>
+  
+  ==============================================
+    Intro
+  ==============================================
+   1. We will cover 3 programming languages.
+   2. Java, C, and Python are all great.
+   3. My favorite is C.
+   4. You can do amazing things with these languages. 
+  =============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">E</span>
+  
+  Edit title, duration, or bullets? (t/d/b) <span class="input">b</span>
+  Bullet index: <span class="input">3</span>
+  Delete or edit? (d/e) <span class="input">d</span>
+  
+  Bullet 3 has been deleted.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">D</span>
+
+  ==============================================
+    Intro
+  ==============================================
+   1. We will cover 3 programming languages.
+   2. Java, C, and Python are all great.
+   3. You can do amazing things with these languages. 
+  =============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">F</span>
+  
+  The cursor moved forward to slide &quot;C&quot;.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">R</span>
+  
+  Slide &quot;C&quot; has been removed.
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">P</span>
+  
+  Slideshow Summary:
+  ==============================================
+    Slide    Title         Duration   Bullets
+  ----------------------------------------------
+  -&gt; 1       Intro         3.2        3  
+     2       Java          6.1        4  
+  ==============================================
+  Total: 2 slide(s), 9.3 minute(s), 7 bullet(s)
+  ==============================================
+  
+  <span class="comment">// menu not shown in the sample input/output</span>
+  Select a menu option: <span class="input">Q</span>
+  
+  Program terminating normally...
+</span></pre></div>
+        <hr size="2" width="100%" align="center"/>
+        <p align="center" style="text-align:center;"><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:maroon;"><a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/courseinfo.htm" target="_blank">Course Info</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/schedule.htm" target="_blank">Schedule</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/sections.htm" target="_blank">Sections</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/index.html" target="_blank">Announcements</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/homework.htm" target="_blank">Homework</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/exams.htm" target="_blank">Exams</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/help.htm" target="_blank">Help/FAQ</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/grades.htm" target="_blank">Grades</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/index.html" target="_blank">HOME</a></span></strong><b> </b></p>
+</div>
+
+
+<script type="module" src="https://s.brightspace.com/lib/bsi/20.23.1-251/unbundled/mathjax.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					if (document.querySelector('math') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
+						document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
+							elm.setAttribute('style', 'display: block; height: 0.5rem;');
+						});
+
+						window.D2L.MathJax.loadMathJax({
+							'outputScale': 1.3,
+							'renderLatex': true
+						});
+					}
+				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/20.23.1-251/unbundled/prism.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					document.querySelectorAll('.d2l-code').forEach(code => {
+						window.D2L.Prism.formatCodeElement(code);
+					});
+				});</script></body></html>
