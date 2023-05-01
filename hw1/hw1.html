@@ -1,0 +1,915 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+    
+
+
+
+
+
+
+<div lang="EN-US">
+
+<div>
+
+<h2 align="center" style="text-align:center;">
+    <span>
+        <img width="244" height="121" src="http://www.cs.stonybrook.edu/~cse214/images/logo.gif"/>
+    </span>
+    <br/>
+    <span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:maroon;">
+        HOMEWORK 1- Spring 2023
+    </span>
+</h2>
+
+<hr size="2" width="100%" align="center"/>
+
+<h3>
+    <span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">
+        <b>HOMEWORK 1 - due Tuesday, February 7th no later than 7:00PM</b>
+    </span>
+</h3>
+
+<p><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">
+    REMINDERS:
+</span></strong></p>
+
+<ul type="disc">
+<li><b><span style="color:red;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">
+   Use of a package is optional. If you wish to use it, make sure to name it &quot;hw1&quot; (all in lower case). Otherwise, you will lose points.</span></b><span></span></li>
+
+ <li><b><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">Be sure your
+     code follows the <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/codingstyle.htm" target="_blank">coding
+     style</a> for CSE214. </span></b><span></span></li>
+ <li><b><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">Make sure
+     you read the warnings about <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/courseinfo.htm" target="_blank">academic dishonesty</a>.
+     <i>Remember, all work you submit for homework or exams MUST be your own
+     work.</i> </span></b></li>
+ <li><b><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;">Login to
+     your <a rel="noopener" href="http://facdev04.cs.stonybrook.edu:8080/grade.Login" target="_blank">grading
+     account</a> and click &quot;Submit Assignment&quot; to upload and submit
+     your assignment. </span></b></li>
+
+<li><b><span style="font-family:Arial;color:red;">You
+     are not allowed to use ArrayList, Vector or any other Java API Data
+     Structure classes to implement this assignment.</span></b><b><span style="font-family:Arial,sans-serif;"></span></b></li>
+<li><b><span style="font-family:Arial,sans-serif;">You may
+     use Scanner, InputStreamReader, or any other class that you wish for
+     keyboard input.</span></b></li>
+</ul>
+
+<hr size="2" width="100%" align="center"/>
+
+<p><strong>In this assignment, you will be required to write a Java program to 
+keep track of a baseball team’s statistics. A team consists of up to 40 
+players, each of whom has a certain number of hits and errors.</strong></p>
+
+<hr/>
+<h2><strong><u>UML</u></strong></h2>
+<p><b>The UML Diagram for all the classes specified below is as follows:</b></p>
+<center><img src="https://www.cs.stonybrook.edu/~cse214/hw/hw1-images/hw1-uml-sp21.png" width="65%"/></center>
+
+<hr/>
+
+
+<h2>Required Classes</h2>
+<p><strong>The following sections describe classes which are required for this assignment. Each
+section provides a description and the specifications necessary to complete each class. If you feel
+that additional methods would be useful, feel free to add them during your implementation
+as you see fit. However, all the variables and methods in the following specifications must be
+included in your project.</strong></p>
+
+<h3>1. Player</h3>
+<p><strong>Write a fully-documented class named <span class="code">Player</span> which contains the player’s name
+(String), number of hits (int), and number of errors (int). You should provide
+accessor and mutator methods for each variable as well as a default
+constructor. For the mutator of the hits and errors variables, you should throw
+an exception if the new value is less than 0. You should also provide a toString()
+method that returns a printable representation of the player and his statistics
+(hits and errors).
+</strong></p>
+
+<h3>2. Team</h3>
+
+<p><strong>Write a full-documented class named <span class="code">Team</span> that 
+stores all Player objects that belong to a particular team. The Player objects should 
+be stored in <span style="color:red;">an array</span>. There should be a maximum of 
+40 Player objects allowed, a number which should be defined as a final variable. 
+The class will be based on the following ADT specification:</strong></p>
+
+<p><strong>
+<ul>
+
+    <li><span class="code">public static final int MAX_PLAYERS = 40;</span></li><br/>
+
+	<li><span class="code">public Team()</span>
+		<ul>
+	        <li><i>Brief:</i>
+	            <ul>
+	                <li>Construct an instance of the <span class="code">Team</span> 
+                    class with no Player objects in it.</li>
+	            </ul>
+	        </li><br/>
+
+	        <li><i>Postconditions:</i>
+	            <ul>
+	                <li>This <span class="code">Team</span> has been initialized 
+                    to an empty list of <span class="code">Players</span>.</li>
+	            </ul>
+	        </li><br/>
+
+	    </ul>
+	</li>
+    <li><span class="code">public Object clone()</span>
+        <ul>
+            <li><i>Brief:</i>
+                <ul>
+                    <li>Generate a clone of this <span class="code">Team</span>.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Returns:</i>
+                <ul>
+                    <li>The return value is a clone of this 
+                    <span class="code">Team</span>. Subsequent changes to the 
+                    clone will not affect the original, nor vice versa. Note that
+                     the return value must be typecast to a <span class="code">
+                     Team</span> before it can be used..</li>
+                </ul>
+            </li><br/>
+
+        </ul>
+    </li>
+    <li><span class="code">public boolean equals(Object obj)</span>
+		<ul>
+	        <li><i>Brief:</i>
+	            <ul>
+	                <li>Compare this <span class="code">Team</span> to another 
+                    object for equality.</li>
+	            </ul>
+	        </li><br/>
+
+	        <li><i>Parameters:</i>
+	            <ul>
+	                <li><span class="code">obj</span> - an object to which this 
+                    <span class="code">Team</span> is compared</li>
+	            </ul>
+	        </li><br/>
+
+	        <li><i>Returns:</i>
+	            <ul>
+	                <li>A return value of <span class="code">true</span> indicates
+                     that <span class="code">obj</span> refers to a 
+                     <span class="code">Team</span> object with the same <span class="code">Players</span> in the same order as this 
+                     <span class="code">Team</span>. Otherwise, the return value 
+                     is <span class="code">false</span>. If <span class="code">
+                     obj</span> is null or it is not a <span class="code">Team
+                     </span> object, then the return value is false.</li>
+	            </ul>
+	        </li><br/>
+
+            <li><i><font color="green">Note:</font></i>
+                <ul>
+                    <li>When comparing equality between two <span class="code">
+                    Player</span> objects, you must verify that their names, hits, 
+                    and errors are all the same. Using the == operator will simply 
+                    check to see if the two variables refer to the same <span class="code">Player</span> object, which does not take into 
+                    consideration that two different <span class="code">Player</span> 
+                    objects can actually represent the same person. To solve this 
+                    problem, you can either check that each of the properties of 
+                    the two objects are the same (name, hits, errors) inside of 
+                    this method, or you may simplify this process by implementing 
+                    an equals method (similar to this one) for the <span class="code">
+                    Player</span> class.</li>
+                </ul>
+            </li><br/>
+
+	    </ul>
+	</li>
+    <li><span class="code">public int size()</span>
+		<ul>
+	        <li><i>Brief:</i>
+	            <ul>
+	                <li>Determines the number of <span class="code">Players</span> 
+                    currently in this <span class="code">Team</span>.</li>
+	            </ul>
+	        </li><br/>
+
+	        <li><i>Preconditions:</i>
+	            <ul>
+	                <li>This <span class="code">Team</span> object has been 
+                    instantiated.</li>
+	            </ul>
+	        </li><br/>
+
+            <li><i>Returns:</i>
+                <ul>
+                    <li>The number of <span class="code">Players</span> in this 
+                    <span class="code">Team</span>.</li>
+                </ul>
+            </li><br/>
+
+	    </ul>
+	</li>
+
+	<li><span class="code">public void addPlayer(Player p, int position)</span>
+		<ul>
+	        <li><i>Brief:</i>
+	            <ul>
+	                <li>Adds a <span class="code">Player</span> to the team at 
+                    the indicated position in the lineup.</li>
+	            </ul>
+	        </li><br/>
+
+            <li><i>Parameters:</i>
+                <ul>
+                    <li><span class="code">p</span> - the new <span class="code">
+                        Player</span> object to add to this <span class="code">
+                        Team</span>.</li>
+                    <li><span class="code">position</span> - the position in the
+                        lineup where the <span class="code">Player</span> will be 
+                        inserted .</li>
+                </ul>
+            </li><br/>
+
+	        <li><i>Preconditions:</i>
+	            <ul>
+	                <li>This <span class="code">Team</span> object has been 
+                        instantiated</li>
+                    <li><span class="code">1 ≤  position ≤ 
+                        players_currently_in_team + 1</span>.</li>
+                    <li>The number of <span class="code">Player</span> objects 
+                        in this <span class="code">Team</span> is less than 
+                        <span class="code">MAX_PLAYERS</span>.</li>
+	            </ul>
+	        </li><br/>
+
+            <li><i>Postconditions:</i>
+                <ul>
+                    <li>The new <span class="code">Player</span> is now stored 
+                    at the desired position in the <span class="code">Team</span>. 
+                    All <span class="code"> Players</span> that were originally 
+                    in positions greater than or equal to position are moved back 
+                    one position.</li>
+                <li> E.g. If there are 5 <span class="code">Players
+                    </span> in a <span class="code">Team</span>, positions 1-5, 
+                    and you insert a new <span class="code">Player</span> at 
+                    position 4, the new <span class="code">Player</span> will now
+                     be at position 4, the <span class="code">Player</span> that 
+                     was at position 4 will be moved to position 5, and the 
+                     <span class="code">Player</span> that was at position 5 will
+                      be moved to position 6).</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Throws:</i>
+                <ul>
+                    <li><span class="code">IllegalArgumentException</span> - 
+                        Indicates that position is not within the valid range..</li>
+                    <li><span class="code">FullTeamException</span> - Indicates 
+                        that there is no more room inside of the Team to store the 
+                        new <span class="code">Player</span> object.</li>
+                </ul>
+            </li><br/>
+
+            <li><i><font color="green">Note:</font></i>
+                <ul>
+                    <li>Position refers to the position in the <span class="code">
+                    Team</span> lineup and not the position inside the array.</li>
+                    <li>Inserting a <span class="code">Player</span> to position 
+                    <span class="code">(players_currently_in_team + 1)</span> is 
+                    effectively the same as adding a <span class="code">Player
+                    </span> to the end of the <span class="code">Team</span>.</li>
+                </ul>
+            </li><br/>
+
+	    </ul>
+	</li>
+
+    <li><span class="code">public void removePlayer(int position)</span>
+        <ul>
+            <li><i>Brief:</i>
+                <ul>
+                    <li>Removes a <span class="code">Player</span> from the 
+                    team at the indicated position in the lineup.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Parameters:</i>
+                <ul>
+                    <li><span class="code">position</span> - the position in the
+                        lineup from which the <span class="code">Player</span>
+                        is to be removed.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Preconditions:</i>
+                <ul>
+                    <li>This <span class="code">Team</span> object has been 
+                        instantiated</li>
+                    <li><span class="code">1 ≤  position ≤ 
+                        players_currently_in_team </span>.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Postconditions:</i>
+                <ul>
+                    <li>The <span class="code">Player</span> at the desired 
+                    position in the <span class="code">Team</span> has been 
+                    removed.</li>
+                    <li> All <span class="code">Players</span> that were originally 
+                    in positions greater than or equal to position are moved 
+                    forward one position.</li>
+                    <li>E.g. If there are 5 <span class="code">Players</span> in 
+                    a <span class="code">Team</span>, positions 1-5, and you remove 
+                    the <span class="code">Player</span> at position 4, the 
+                    <span class="code">Player</span> that was at position 5 will
+                     be moved to position 4.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Throws:</i>
+                <ul>
+                    <li><span class="code">IllegalArgumentException</span> - 
+                        Indicates that position is not within the valid range..</li>
+                </ul>
+            </li><br/>
+
+            <li><i><font color="green">Note:</font></i>
+                <ul>
+                    <li>Position refers to the position in the <span class="code">
+                    Team</span> lineup and not the position inside the array.</li>
+                </ul>
+            </li><br/>
+
+        </ul>
+    </li>
+
+	<li><span class="code">public Player getPlayer(int position)</span>
+		<ul>
+	        <li><i>Brief:</i>
+	            <ul>
+	                <li>Returns a reference to a player in the lineup at the
+                    indicated position.</li>
+	            </ul>
+	        </li><br/>
+
+            <li><i>Parameters:</i>
+                <ul>
+                    <li><span class="code">position</span> - the position in the
+                        lineup from which the <span class="code">Player</span>
+                        is to be retrieved.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Preconditions:</i>
+                <ul>
+                    <li>This <span class="code">Team</span> object has been 
+                    instantiated.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Returns:</i>
+                <ul>
+                    <li>The <span class="code">Player</span> from the given index.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Throws:</i>
+                <ul>
+                    <li><span class="code">IllegalArgumentException</span> - 
+                        Indicates that position is not within the valid range.</li>
+                </ul>
+            </li><br/>
+
+            <li><i><font color="green">Note:</font></i>
+                <ul>
+                    <li>Position refers to the position in the <span class="code">
+                    Team</span> lineup and not the position inside the array.</li>
+                </ul>
+            </li><br/>
+
+	    </ul>
+	</li>
+
+    
+
+    <li><span class="code">public Player getLeader(<b><font color="red">String</font></b> stat)</span>
+        <ul>
+            <li><font color="red">Note: If you implement this method using &#39;int&#39; stat (0 or 1 indicating
+            hits or errors), this is acceptable as well.</font></li>
+            <li><i>Brief:</i>
+                <ul>
+                    <li>Return the <span class="code">Player</span> with the 
+                    best value in the given statistic (&quot;hits&quot; or &quot;errors&quot;).</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Parameters:</i>
+                <ul>
+                    <li><span class="code">stat</span> - either &quot;hits&quot; or
+                    &quot;errors&quot;.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Preconditions:</i>
+                <ul>
+                    <li>This <span class="code">Team</span> object has been 
+                    instantiated.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Returns:</i>
+                <ul>
+                    <li>The <span class="code">Player</span> with the best stat.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Throws:</i>
+                <ul>
+                    <li><span class="code">IllegalArgumentException</span> - 
+                        Indicates that indicated stat was neither &quot;hits&quot; nor
+                        &quot;errors&quot;.</li>
+                </ul>
+            </li><br/>
+
+            <li><i><font color="green">Note:</font></i>
+                <ul>
+                    <li>Remember that HIGHER hits are good, whereas LOWER errors
+                     are good.</li>
+                </ul>
+            </li><br/>
+
+        </ul>
+    </li>
+
+    <li><span class="code">public void printAllPlayers()</span>
+        <ul>
+            <li><i>Brief:</i>
+                <ul>
+                    <li>Prints a neatly formatted table of each <span class="code">
+                    Player</span> in the <span class="code">Team</span> on its 
+                    own line with its position number as shown in the sample 
+                    output.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Preconditions:</i>
+                <ul>
+                    <li>This <span class="code">Team</span> object has been 
+                    instantiated.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Preconditions:</i>
+                <ul>
+                    <li>A neatly formatted table of each <span class="code">Player
+                    </span> in the <span class="code">Team</span> on its own line 
+                    with its position number has been displayed to the user.</li>
+                </ul>
+            </li><br/>
+
+            
+
+            <li><font color="green"><i>Hint:</i>
+                <ul>
+                    <li>If your toString() method is implemented correctly as described below, you will simply need to call it and print the results to the user..</li>
+                </ul>
+            </font></li><br/>
+
+        </ul>
+    </li>
+
+    <li><span class="code">public Sring toString()</span>
+        <ul>
+            <li><i>Brief:</i>
+                <ul>
+                    <li>Gets the <span class="code">String</span> representation 
+                    of this <span class="code">Team</span> object, which is a neatly 
+                    formatted table of each <span class="code">Player</span> in 
+                    the <span class="code">Team</span> on its own line with its 
+                    position number as shown in the sample output.</li>
+                </ul>
+            </li><br/>
+
+            <li><i>Returns:</i>
+                <ul>
+                    <li>The <span class="code">String</span> representation of 
+                    this <span class="code">Team</span> object.</li>
+                </ul>
+            </li><br/>
+
+        </ul>
+    </li>
+
+
+</ul>
+</strong></p>
+
+
+<h3>3. TeamManager</h3>
+<p><strong>Write a fully-documented class named <span class="code">TeamManager</span> 
+which tests the methods of the <span class="code">Team</span> class and allows 
+the user to manipulate 5 <span class="code">Team</span> objects by 
+performing operations on it.</strong></p>
+
+<ul><strong>
+
+    </strong><li><strong><span class="code">public static final int MAX_TEAMS = 5;</span></strong></li><strong><br/>
+
+    </strong><li><strong><span class="code">public static void main(String[] args)</span>
+        <ul>
+
+            <li><i>Brief:</i>
+                <ul>
+                    <li>The main method runs a menu driven application which first 
+                    creates an empty <span class="code">Team</span> and then prompts
+                     the user for a menu command selecting the operation. The 
+                     required information is then requested from the user based 
+                     on the selected operation. Following is the list of menu 
+                     options and their required information: </li>
+                </ul>
+            </li><br/>
+
+        </ul>
+    </strong></li><strong>
+
+</strong></ul>
+
+<ul><strong><span class="code">
+    </span></strong><li><strong>A)  Add Player. <i><font color="green">&lt;Name&gt; &lt;Hits&gt; &lt;Errors&gt; <span style="color:red;">&lt;Position&gt;</span></font></i></strong></li><strong>
+    </strong><li><strong>G)  Get Player stats. <i><font color="green">&lt;Position&gt;</font></i></strong></li><strong>
+    </strong><li><strong>L)  Get leader in a stat. <i><font color="green">&lt;Stat&gt;</font></i></strong></li><strong>
+    </strong><li><strong>R)  Remove a player. <i><font color="green">&lt;Position&gt;</font></i></strong></li><strong>
+    </strong><li><strong>P)  Print all players. <i><font color="green">&lt;Team&gt;</font></i></strong></li><strong>
+    </strong><li><strong>S)  Size of team. <i><font color="green">&lt;Team&gt;</font></i></strong></li><strong>
+    </strong><li><strong>T)  Select team <i><font color="green">&lt;Index&gt;</font></i></strong></li><strong>
+    </strong><li><strong>C)  Clone team <i><font color="green">&lt;From&gt; &lt;To&gt;</font></i></strong></li><strong>
+    </strong><li><strong>E)  Team equals <i><font color="green">&lt;Team1&gt; &lt;Team2&gt;</font></i></strong></li><strong>
+    </strong><li><strong>U)  Update stat. <i><font color="green">&lt;Name&gt; &lt;Stat&gt; &lt;numHits&gt;</font></i></strong></li><strong>
+    </strong><li><strong>Q)  Quit.</strong></li><strong>
+</strong></ul>
+
+<h3>4. FullTeamException</h3>
+
+<p><strong>An Exception class which indicates a full roster.</strong></p>
+
+<hr size="2" width="100%" align="center"/>
+
+<h3>Input Format:</h3>
+
+<ul><strong>
+    </strong><li><strong>Each menu operation is entered on its own line and should be case insensitive (i.e. &#39;q&#39; and &#39;Q&#39; are the same).</strong></li><strong>
+    </strong><li><strong>Check to make sure that the position, if required, is valid. If not, print an error message and return to the menu.</strong></li><strong>
+    </strong><li><strong>For the Add Player command, if the input information is valid, construct the object accordingly. Otherwise, print an error message and return to the menu.</strong></li><strong>
+    </strong><li><strong>You may assume that the lengths of the input for the player names are less than 25 characters long, and that the number of hits and errors fits into an int variable.</strong></li><strong>
+</strong></ul>
+
+
+<h3>Output Format:</h3>
+
+<ul><strong>
+    </strong><li><strong>All lists must be printed in a nice and tabular form as shown in the sample output. You may use C style formatting as shown in the following example. The example below shows two different ways of displaying the name and address at pre-specified positions 21, 26, 19, and 6 spaces wide. If the &#39;-&#39; flag is given, then it will be left-justified (padding will be on the right), else the region is right-justified. The &#39;s&#39; identifier is for strings, the &#39;d&#39; identifier is for integers. Giving the additional &#39;0&#39; flag pads an integer with additional zeroes in front.</strong></li><strong>
+
+<pre>
+        String name = &quot;Doe Jane&quot;;
+        String address = &quot;32 Bayview Dr.&quot;;
+        String city = &quot;Fishers Island, NY&quot;;
+        int zip = 6390;
+             
+        System.out.println(String.format(&quot;%-21s%-26s%19s%06d&quot;, name, address, city, zip));
+        System.out.printf(&quot;%-21s%-26s%19s%06d&quot;, name, address, city, zip);
+         
+        Doe Jane             32 Bayview Dr.             Fishers Island, NY 06390
+        Doe Jane             32 Bayview Dr.             Fishers Island, NY 06390
+</pre>
+
+</strong></ul>
+
+<hr size="2" width="100%" align="center"/>
+
+<h2>Sample Input/Output:</h2>
+
+<p><span class="comment">// Comment in green, </span><span class="input">input in red,
+</span>output in black</p>
+
+<div style="font-size:16;" class="code"><strong>
+
+<pre>
+
+Welcome to TeamManager!
+
+Team 1 is currently selected.
+
+<span class="comment">// menu</span>
+Please select an option:
+A)  Add Player.
+G)  Get Player stats. 
+L)  Get leader in a stat. 
+R)  Remove a player. 
+P)  Print all players.
+S)  Size of team.
+T)  Select team 
+C)  Clone team
+E)  Team equals
+U)  Update stat.
+Q)  Quit.
+ 
+Select a menu option: A        
+ 
+Enter the player&#39;s name: David Ortiz
+Enter the number of hits: 542
+Enter the number of errors: 10
+Enter the position: 1
+Player added: David Ortiz - 542 hits, 10 errors
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: A        
+ 
+Enter the player&#39;s name: Derek Jeter
+Enter the number of hits: 83
+Enter the number of errors: 20
+Enter the position: 1
+Player added: Derek Jeter - 83 hits, 20 errors
+ 
+ 
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 1
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Derek Jeter        83         20
+2         David Ortiz        542        10
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: A        
+ 
+Enter the player&#39;s name: Albert Pujols
+Enter the number of hits: 222
+Enter the number of errors: 15
+Enter the position: 2
+Player added: Albert Pujols - 222 hits, 15 errors
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 1
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Derek Jeter        83         20
+2         Albert Pujols      222        15
+3         David Ortiz        542        10
+ 
+ 
+Select a menu option: S
+There are 3 players(s) in the current Team. 
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: R
+ 
+Enter the position: 1
+Player Removed at position 1
+ 
+Derek Jeter has been removed from the team.
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 1
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Albert Pujols      222        15
+2         David Ortiz        542        10
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: A        
+ 
+Enter the player&#39;s name: Randy Johnson
+Enter the number of hits: 2
+Enter the number of errors: 3
+Enter the position: 3
+Player added: Randy Johnson - 2 hits, 3 errors
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 1
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Albert Pujols      222        15
+2         David Ortiz        542        10
+3         Randy Johnson      2          3
+ 
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: G
+ 
+Enter the position: 3
+ 
+Randy Johnson - 2 hits, 3 errors
+ 
+ 
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: L
+ 
+Enter the stat: hits
+ 
+Leader in hits: David Ortiz - 542 hits, 10 errors
+ 
+ 
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: L
+ 
+Enter the stat: errors
+ 
+Leader in errors: Randy Johnson - 2 hits, 3 errors
+ 
+ 
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: U
+ 
+Enter the player to update: Albert Pujols
+Enter stat to update: errors
+Enter the new number of errors: 2
+ 
+Updated Albert Pujols errors
+ 
+ 
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: L
+ 
+Enter the stat: errors
+ 
+Leader in errors: Albert Pujols - 222 hits, 2 errors
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: T
+ 
+Enter team index to select: 2
+ 
+Team 2 has been selected.
+
+
+<span class="comment">//Adding players to team 2...</span>
+...
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 1
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Albert Pujols      222        2
+2         David Ortiz        542        10
+3         Randy Johnson      2          3
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 2
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Miguel Cabrera     374        9
+2         Mike Trout         654        11
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: E
+
+Select first team index: 1
+Select second team index: 2
+ 
+These teams are not equal.
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: C
+
+Select team to clone from: 2
+Select team to clone to: 1
+ 
+Team 2 has been copied to team 1.
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: P
+
+Select team index: 1
+ 
+Player#   Name               Hits       Errors
+------------------------------------------------
+1         Miguel Cabrera     374        9
+2         Mike Trout         654        11
+
+
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: E
+
+Select first team index: 1
+Select second team index: 2
+ 
+These teams are equal.
+
+
+<span class="comment">//Invalid Input examples:</span>
+
+
+<span class="comment">//Player not found:</span>
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: U
+ 
+Enter the player to update: Rick Santorum
+Enter stat to update: errors
+Enter the new number of errors: 837
+ 
+Player not found.
+ 
+
+<span class="comment">//Invalid index:</span>
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: R
+
+Enter the position: 4
+No player at position 4 to remove.
+ 
+
+<span class="comment">//Invalid index:</span>
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: A        
+ 
+Enter the player&#39;s name: Someone Else
+Enter the number of hits: 823
+Enter the number of errors: 36
+Enter the position: 9
+Invalid position for adding the new player.
+ 
+
+<span class="comment">//Invalid team:</span>
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: T
+ 
+Enter team index to select: 7 <span class="comment">// 7 &gt; MAX_TEAMS</span>
+ 
+Invalid index for team.
+
+<span class="comment">//Invalid stat:</span>
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: L
+ 
+Enter the stat: steals
+ 
+No such statistic.
+ 
+ 
+<span class="comment">// menu not shown in the sample input/output</span>
+Select a menu option: Q
+ 
+Program terminating normally...
+
+</pre>
+
+</strong>
+
+</div>
+
+<strong></strong></div><strong>
+
+<hr size="2" width="100%" align="center"/>
+
+<p align="center" style="text-align:center;"><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;;color:maroon;"><a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/courseinfo.htm" target="_blank">Course Info</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/schedule.htm" target="_blank">Schedule</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/sections.htm" target="_blank">Sections</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/index.html" target="_blank">Announcements</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/homework.htm" target="_blank">Homework</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/exams.htm" target="_blank">Exams</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/help.htm" target="_blank">Help/FAQ</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/grades.htm" target="_blank">Grades</a> | <a rel="noopener" href="http://www.cs.sunysb.edu/~cse214/index.html" target="_blank">HOME</a></span></strong><b> </b></p>
+
+</strong></div>
+
+
+<script type="module" src="https://s.brightspace.com/lib/bsi/20.23.1-242/unbundled/mathjax.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					if (document.querySelector('math') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
+						document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
+							elm.setAttribute('style', 'display: block; height: 0.5rem;');
+						});
+
+						window.D2L.MathJax.loadMathJax({
+							'outputScale': 1.3,
+							'renderLatex': true
+						});
+					}
+				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/20.23.1-242/unbundled/prism.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					document.querySelectorAll('.d2l-code').forEach(code => {
+						window.D2L.Prism.formatCodeElement(code);
+					});
+				});</script></body></html>
