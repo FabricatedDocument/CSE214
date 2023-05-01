@@ -1,9 +1,3 @@
-/*
- * Name: SukMin Sim
- * ID: 112190914
- * Recitation: 02
- */
-
 public class Player {
 	
 	//Member Variables
