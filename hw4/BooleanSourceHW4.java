@@ -1,8 +1,3 @@
-/*
- * Name: SukMin Sim
- * ID: 112190914
- * Recitation: 02
- */
 package hw4;
 // Last updated: 3/8/2023 @ 12:39am
 import java.io.*;
