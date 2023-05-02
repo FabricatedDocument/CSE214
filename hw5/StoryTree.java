@@ -1,8 +1,3 @@
-/*
- * Name: SukMin Sim
- * ID: 112190914
- * Recitation: 02
- */
 package hw5;
 
 import java.io.BufferedReader;
