@@ -1,0 +1,18 @@
+1 | Let's Play! | It is Monday morning and your alarm goes off. What do you do?
+1-1 | Wake up. | You get to class on time, but you're a bit drowsy. What do you do?
+1-1-1 | Tough it out. | You make it through class, and pass the quiz. YOU WIN!
+1-1-2 | Put your head down, just for a little bit. | You wake up suddenly. A wild quiz has appeared.
+1-1-2-1 | Show me the quiz. | There is only one question. "What is a tree?"
+1-1-2-1-1 | A data structure that holds 2^depth-1 elements. | Correct! YOU WIN.
+1-1-2-1-2 | A big brown plant you can climb. Occasionally has green stuff on top. | What are you? A botany major? YOU LOSE.
+1-1-2-1-3 | Green, like shrek! | The classroom drops away and there he is, looming over you. Shrek is love, shrek is life. It's all ogre now. YOU WIN.
+1-2 | Hit snooze. | The alarm goes off again, what do you do?
+1-2-1 | Snooze again. | You overslept, and missed the quiz. YOU LOSE.
+1-2-2 | Get up. | You're running a little late for class, what do you do?
+1-2-2-1 | Run to class. | You make it to class on time, and pass the quiz. YOU WIN.
+1-2-2-2 | Walk to class. | You're late to class, but just in time for the quiz. You must take the quiz.
+1-2-2-2-1 | Show me the quiz. | There is only one question. "What is a tree?"
+1-2-2-2-1-1 | A data structure that holds 2^depth-1 elements. | Correct! YOU WIN.
+1-2-2-2-1-2 | A big brown plant you can climb. Occasionally has green stuff on top. | What are you? A botany major? YOU LOSE.
+1-2-2-2-1-3 | Green, like Shrek! | The classroom drops away and there he is, looming over you. Shrek is love, shrek is life. It's all ogre now. YOU WIN.
+1-3 | Turn off the alarm. | You missed the quiz, YOU LOSE.
