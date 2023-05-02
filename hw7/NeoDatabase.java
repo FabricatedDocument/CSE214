@@ -13,7 +13,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 public class NeoDatabase implements Collection<NearEarthObject>{
-	public static final String API_KEY = "UQlFzDfMg4I4Qnun99fesLhLIx3ASPYYAdr0kbug";
+	public static final String API_KEY = "YOUR_OWN_API_KEY";
 	public static final String API_ROOT = "https://api.nasa.gov/neo/rest/v1/neo/browse?";
 	private ArrayList<NearEarthObject> planetDB;
 	
